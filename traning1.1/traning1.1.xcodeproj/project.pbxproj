@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4705CF3327E1C5C100E590A4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CF3227E1C5C100E590A4 /* APIService.swift */; };
+		4705CF3627E1CA7700E590A4 /* InforModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4705CF3527E1CA7700E590A4 /* InforModel.swift */; };
 		47292D3527E17A0800668FB4 /* InforViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47292D3427E17A0800668FB4 /* InforViewController.swift */; };
 		47292D3927E189FF00668FB4 /* PageOneCLVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47292D3727E189FF00668FB4 /* PageOneCLVCell.xib */; };
 		47292D3A27E189FF00668FB4 /* PageOneCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47292D3827E189FF00668FB4 /* PageOneCLVCell.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4705CF3227E1C5C100E590A4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		4705CF3527E1CA7700E590A4 /* InforModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforModel.swift; sourceTree = "<group>"; };
 		47292D3427E17A0800668FB4 /* InforViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InforViewController.swift; sourceTree = "<group>"; };
 		47292D3727E189FF00668FB4 /* PageOneCLVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageOneCLVCell.xib; sourceTree = "<group>"; };
 		47292D3827E189FF00668FB4 /* PageOneCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneCLVCell.swift; sourceTree = "<group>"; };
@@ -45,6 +49,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4705CF3127E1C5A700E590A4 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				4705CF3227E1C5C100E590A4 /* APIService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		4705CF3427E1CA6400E590A4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4705CF3527E1CA7700E590A4 /* InforModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		47292D3627E189D000668FB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +103,8 @@
 		475ADED327E02DBB006991BC /* traning1.1 */ = {
 			isa = PBXGroup;
 			children = (
+				4705CF3427E1CA6400E590A4 /* Models */,
+				4705CF3127E1C5A700E590A4 /* APIService */,
 				47292D3627E189D000668FB4 /* View */,
 				47349D4E27E03DB80012337E /* ViewControllers */,
 				475ADED427E02DBB006991BC /* AppDelegate.swift */,
@@ -168,6 +190,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				475ADED527E02DBB006991BC /* AppDelegate.swift in Sources */,
+				4705CF3327E1C5C100E590A4 /* APIService.swift in Sources */,
+				4705CF3627E1CA7700E590A4 /* InforModel.swift in Sources */,
 				475ADED727E02DBB006991BC /* SceneDelegate.swift in Sources */,
 				47292D3527E17A0800668FB4 /* InforViewController.swift in Sources */,
 				47349D5227E04CB90012337E /* KeyChainViewController.swift in Sources */,

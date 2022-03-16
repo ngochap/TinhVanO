@@ -129,18 +129,30 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list1" translatesAutoresizingMaskIntoConstraints="NO" id="oJK-fQ-biK">
                                         <rect key="frame" x="294.5" y="43.5" width="54" height="29.5"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCn-IT-4sB">
+                                        <rect key="frame" x="294.5" y="43.5" width="54" height="29.5"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="btnList:" destination="H8h-7H-W7Q" eventType="touchUpInside" id="dnm-1q-1Ij"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oJK-fQ-biK" firstAttribute="height" secondItem="6TD-LT-7yc" secondAttribute="height" multiplier="0.25" id="1NN-tu-yXa"/>
                                     <constraint firstItem="oJK-fQ-biK" firstAttribute="width" secondItem="6TD-LT-7yc" secondAttribute="width" multiplier="0.13" id="31w-6o-ACY"/>
+                                    <constraint firstItem="YCn-IT-4sB" firstAttribute="top" secondItem="oJK-fQ-biK" secondAttribute="top" id="7QD-9q-rJg"/>
                                     <constraint firstItem="dDa-QR-UI7" firstAttribute="height" secondItem="6TD-LT-7yc" secondAttribute="height" multiplier="0.266094" id="7mX-ae-iIw"/>
                                     <constraint firstItem="06C-8m-xAT" firstAttribute="leading" secondItem="6TD-LT-7yc" secondAttribute="leading" constant="16" id="Crk-GC-bZ9"/>
                                     <constraint firstItem="W2j-bc-Of2" firstAttribute="centerX" secondItem="6TD-LT-7yc" secondAttribute="centerX" id="Ezv-kC-rmi"/>
                                     <constraint firstItem="dDa-QR-UI7" firstAttribute="centerY" secondItem="6TD-LT-7yc" secondAttribute="centerY" id="GFY-sB-oXU"/>
                                     <constraint firstItem="06C-8m-xAT" firstAttribute="centerY" secondItem="6TD-LT-7yc" secondAttribute="centerY" id="KSK-KL-7ds"/>
+                                    <constraint firstItem="YCn-IT-4sB" firstAttribute="bottom" secondItem="oJK-fQ-biK" secondAttribute="bottom" id="RAR-5K-D9x"/>
                                     <constraint firstItem="dDa-QR-UI7" firstAttribute="leading" secondItem="oJK-fQ-biK" secondAttribute="trailing" constant="4" id="SbQ-L4-b6W"/>
                                     <constraint firstItem="dDa-QR-UI7" firstAttribute="trailing" secondItem="6TD-LT-7yc" secondAttribute="trailingMargin" constant="-12" id="Wbm-xH-BGJ"/>
+                                    <constraint firstItem="YCn-IT-4sB" firstAttribute="trailing" secondItem="oJK-fQ-biK" secondAttribute="trailing" id="fB1-bT-u5b"/>
+                                    <constraint firstItem="YCn-IT-4sB" firstAttribute="leading" secondItem="oJK-fQ-biK" secondAttribute="leading" id="kMo-t3-mHX"/>
                                     <constraint firstItem="dDa-QR-UI7" firstAttribute="width" secondItem="6TD-LT-7yc" secondAttribute="width" multiplier="0.100242" id="uhM-hB-5dX"/>
                                     <constraint firstItem="W2j-bc-Of2" firstAttribute="centerY" secondItem="6TD-LT-7yc" secondAttribute="centerY" id="vPQ-jF-4Dj"/>
                                     <constraint firstItem="oJK-fQ-biK" firstAttribute="centerY" secondItem="6TD-LT-7yc" secondAttribute="centerY" id="xIC-zq-wKw"/>
@@ -208,6 +220,7 @@
                     <connections>
                         <outlet property="btnSync" destination="CBB-gb-tHE" id="8ax-Cx-20r"/>
                         <outlet property="collectionview" destination="1ov-Yv-PTc" id="Nn0-mi-OAg"/>
+                        <outlet property="imgList" destination="oJK-fQ-biK" id="GFC-9e-Vu8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nr7-gN-JWY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

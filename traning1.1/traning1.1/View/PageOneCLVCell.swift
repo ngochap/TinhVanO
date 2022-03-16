@@ -16,13 +16,13 @@ class PageOneCLVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
-        imgAvata.layer.cornerRadius = imgAvata.frame.width / 2
+       imgAvata.layer.cornerRadius = imgAvata.frame.width / 3.3
+       imgAvata.layer.borderWidth = 1
         imgAvata.layer.masksToBounds = false
         imgAvata.clipsToBounds = true
-        imgAvata.layer.borderWidth = 1
-        imgAvata.layer.borderColor = UIColor.black.cgColor
+       imgAvata.layer.borderColor = UIColor.black.cgColor
+        
+        
     }
 
 }
