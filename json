@@ -1,1 +1,35 @@
-dd
+{
+  "items": [
+    {
+      "title": "Law 1", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+     {
+      "title": "Law 2", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+     {
+      "title": "Law 3", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+     {
+      "title": "Law 4", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+     {
+      "title": "Law 5", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+     {
+      "title": "Law 6", 
+      "image": "file_1581403247115.jpg",
+      "Descript": "a"
+    },
+    
+  ]
+}
