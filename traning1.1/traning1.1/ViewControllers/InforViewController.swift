@@ -15,9 +15,11 @@ class InforViewController: UIViewController {
     
     var listData: [InforModel] = [InforModel]()
     var listData1: [InforModel] = [InforModel]()
+    var arrSelect: [Int] = []
     var checkEdit: Bool = false
+    var checkDelete: Bool = false
     var checkList: Bool = false
-    
+    var didselect: Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         checkEdit = false
@@ -59,43 +61,40 @@ class InforViewController: UIViewController {
             btnSync.setTitle("Sync", for: .normal)
             checkEdit = false
         }
+        collectionview.reloadData()
     }
     
-    @IBAction func btnDelete(_ sender: UIButton) {
+    @IBAction func btnDeleteAndSync(_ sender: UIButton) {
         if checkEdit == true {
-            print("sss")
+            let alert = UIAlertController(title: "Are you Delete?", message: .none, preferredStyle: .alert)
+            let actionOK = UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
+                
+                for i in 0..<self.listData.count {
+                    for j in self.arrSelect {
+                        if i == j {
+                            self.listData.remove(at: i)
+                        }
+                    }
+                    self.collectionview.reloadData()
+                    self.arrSelect = []
+
+                }
+            })
+            
+            alert.addAction(actionOK)
+            let actionCancle = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(actionCancle)
+            if arrSelect != [] {
+            present(alert, animated: true, completion: nil)
+            }
+            
         } else {
             print("aaa")
-            //clearCache()
+            listData.removeAll()
             getHomeNimeManga(){ _,_ in }
-            
         }
     }
     
-    func clearContents(_ url:URL) {
-
-        do {
-
-            let contents = try FileManager.default.contentsOfDirectory(atPath: url.path)
-
-            print("before  \(contents)")
-
-            let urls = contents.map { URL(string:"\(url.appendingPathComponent("\($0)"))")! }
-
-            urls.forEach {  try? FileManager.default.removeItem(at: $0) }
-
-            let con = try FileManager.default.contentsOfDirectory(atPath: url.path)
-
-            print("after \(con)")
-
-        }
-        catch {
-
-            print(error)
-
-        }
-
-     }
     @IBAction func btnList(_ sender: Any) {
         if checkList == false {
             imgList.image = UIImage.init(named: "option")
@@ -115,17 +114,64 @@ extension InforViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageOneCLVCell", for: indexPath) as? PageOneCLVCell else {
             return UICollectionViewCell()
         }
-       
+        if checkEdit == false {
+            cell.checkView.isHidden = true
+        } else {
+            if arrSelect.contains(indexPath.row) {
+                cell.imgCheck.image = UIImage(named: "ic_check")
+                
+            } else {
+                cell.imgCheck.image = UIImage(named: "ic_uncheck")
+            }
+            
+            cell.checkView.isHidden = false
+        }
+        
+        cell.backgroundColor = .clear
+        
         cell.lbTitle.text = listData[indexPath.row].title
         cell.lbDescrip.text = listData[indexPath.row].descript
         cell.imgAvata.image = UIImage.init(named: listData[indexPath.row].image)
         if let url = URL(string: listData[indexPath.row].image){
             cell.imgAvata.load(url: url)
-                  }
+        }
         return cell
     }
 }
 
+extension InforViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            return
+        }
+        if checkEdit == true {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageOneCLVCell", for: indexPath) as? PageOneCLVCell else {
+                return
+            }
+            if arrSelect.contains(indexPath.row) {
+                for i in 0..<arrSelect.count {
+                    if arrSelect[i] == indexPath.row {
+                        arrSelect.remove(at: i)
+                        collectionView.reloadData()
+                        return
+                    }
+                }
+            } else {
+                arrSelect.append(indexPath.row)
+                collectionView.reloadData()
+            }
+            
+        }
+        else {
+            vc.nameTitle = listData[indexPath.row].title
+            vc.nameDescript = listData[indexPath.row].descript
+            vc.nameImage = listData[indexPath.row].image
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+}
 extension InforViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if checkList == false {
@@ -136,19 +182,7 @@ extension InforViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
+
 
 
 

@@ -14,6 +14,8 @@
 		47292D3A27E189FF00668FB4 /* PageOneCLVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47292D3827E189FF00668FB4 /* PageOneCLVCell.swift */; };
 		47349D5027E03DF60012337E /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47349D4F27E03DF60012337E /* UserDefault.swift */; };
 		47349D5227E04CB90012337E /* KeyChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47349D5127E04CB90012337E /* KeyChainViewController.swift */; };
+		4742392B27E2CAE800B88A61 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742392A27E2CAE800B88A61 /* DetailViewController.swift */; };
+		4742393227E2E3DA00B88A61 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742393127E2E3DA00B88A61 /* Extension.swift */; };
 		475ADED527E02DBB006991BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475ADED427E02DBB006991BC /* AppDelegate.swift */; };
 		475ADED727E02DBB006991BC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475ADED627E02DBB006991BC /* SceneDelegate.swift */; };
 		475ADEDC27E02DBB006991BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 475ADEDA27E02DBB006991BC /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 		47292D3827E189FF00668FB4 /* PageOneCLVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageOneCLVCell.swift; sourceTree = "<group>"; };
 		47349D4F27E03DF60012337E /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		47349D5127E04CB90012337E /* KeyChainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainViewController.swift; sourceTree = "<group>"; };
+		4742392A27E2CAE800B88A61 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4742393127E2E3DA00B88A61 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		475ADED127E02DBB006991BC /* traning1.1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = traning1.1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		475ADED427E02DBB006991BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		475ADED627E02DBB006991BC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,8 +84,17 @@
 				47349D4F27E03DF60012337E /* UserDefault.swift */,
 				47349D5127E04CB90012337E /* KeyChainViewController.swift */,
 				47292D3427E17A0800668FB4 /* InforViewController.swift */,
+				4742392A27E2CAE800B88A61 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4742393027E2E3C000B88A61 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4742393127E2E3DA00B88A61 /* Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		475ADEC827E02DBB006991BC = {
@@ -103,6 +116,7 @@
 		475ADED327E02DBB006991BC /* traning1.1 */ = {
 			isa = PBXGroup;
 			children = (
+				4742393027E2E3C000B88A61 /* Extension */,
 				4705CF3427E1CA6400E590A4 /* Models */,
 				4705CF3127E1C5A700E590A4 /* APIService */,
 				47292D3627E189D000668FB4 /* View */,
@@ -189,9 +203,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4742392B27E2CAE800B88A61 /* DetailViewController.swift in Sources */,
 				475ADED527E02DBB006991BC /* AppDelegate.swift in Sources */,
 				4705CF3327E1C5C100E590A4 /* APIService.swift in Sources */,
 				4705CF3627E1CA7700E590A4 /* InforModel.swift in Sources */,
+				4742393227E2E3DA00B88A61 /* Extension.swift in Sources */,
 				475ADED727E02DBB006991BC /* SceneDelegate.swift in Sources */,
 				47292D3527E17A0800668FB4 /* InforViewController.swift in Sources */,
 				47349D5227E04CB90012337E /* KeyChainViewController.swift in Sources */,

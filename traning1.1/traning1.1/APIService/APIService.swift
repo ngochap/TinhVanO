@@ -109,8 +109,10 @@ class APIService:NSObject {
         }
         return nil
     }
+
+
     func GetMangaAll(closure: @escaping (_ response: [InforModel]?, _ error: Error?) -> Void) {
-        requestSON("https://raw.githubusercontent.com/ngochap/TinhVanO/main/json", param: nil, method: .GET, loading: true) { (data, error) in
+        requestSON("https://cab3160c-c3fe-4939-8d18-b3f45c90b9db.mock.pstmn.io/InforModel", param: nil, method: .GET, loading: true) { (data, error) in
             if let d = data as? [String: Any] {
                 var listComicReturn:[InforModel] = [InforModel]()
                 if let slideshows = d["items"] as? [[String : Any]] {
