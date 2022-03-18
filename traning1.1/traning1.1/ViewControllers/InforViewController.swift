@@ -16,12 +16,11 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
     var listData: [InforModel] = [InforModel]()
     var listData1: [InforModel] = []
     var indexSelct: Int = -1
-   
     var arrSelect: [Int] = []
     var checkEdit: Bool = false
     var checkDelete: Bool = false
     var checkList: Bool = false
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkEdit = false
@@ -31,14 +30,13 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionview.delegate = self
         collectionview.dataSource = self
         collectionview.register(UINib(nibName: "PageOneCLVCell", bundle: nil), forCellWithReuseIdentifier: "PageOneCLVCell")
-        
         getHomeNimeManga(){ _,_ in }
         setupLongGestureRecognizerOnCollection()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
+    
     func getHomeNimeManga(andCompletion completion:@escaping (_ moviesResponse: [InforModel], _ error: Error?) -> ()) {
         listData.removeAll()
         APIService.shared.GetMangaAll() { (response, error) in
@@ -73,38 +71,36 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
             let alert = UIAlertController(title: "Are you Delete?", message: .none, preferredStyle: .alert)
             let actionOK = UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
                 
-//                for i in 0..<self.arrSelect.count {
-//                    for j in 0..<self.listData.count {
-//                        if self.arrSelect[i] == j {
-//                            self.listData.remove(at: j)
-//                        }
-//                    }
-//                }
+                //                for i in 0..<self.arrSelect.count {
+                //                    for j in 0..<self.listData.count {
+                //                        if self.arrSelect[i] == j {
+                //                            self.listData.remove(at: j)
+                //                        }
+                //                    }
+                //                }
                 var arrI = [Int]()
                 for (i,e) in self.listData.enumerated(){
-                          if !e.check{
-                              arrI.append(i)
-                          }
-                      }
-                      if arrI.count > 0{
-                          let arrayR = self.listData
-                              .enumerated()
-                              .filter { !arrI.contains($0.offset) }
-                              .map { $0.element }
-                          self.listData = arrayR
-                          
+                    if !e.check{
+                        arrI.append(i)
+                    }
+                }
+                if arrI.count > 0{
+                    let arrayR = self.listData
+                        .enumerated()
+                        .filter { !arrI.contains($0.offset) }
+                        .map { $0.element }
+                    self.listData = arrayR
+                    
                 }
                 self.collectionview.reloadData()
                 self.arrSelect = []
             })
-            
             alert.addAction(actionOK)
             let actionCancle = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(actionCancle)
             if arrSelect != [] {
                 present(alert, animated: true, completion: nil)
             }
-            
         } else {
             print("aaa")
             listData.removeAll()
@@ -121,7 +117,6 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
             checkList = false
         }
     }
-    
 }
 
 extension InforViewController: UICollectionViewDataSource {
@@ -156,7 +151,7 @@ extension InforViewController: UICollectionViewDataSource {
             }
             cell.checkView.isHidden = false
         }
-                cell.backgroundColor = .clear
+        cell.backgroundColor = .clear
         cell.lbTitle.text = listData[indexPath.row].title
         cell.lbDescrip.text = listData[indexPath.row].descript
         cell.imgAvata.image = UIImage.init(named: listData[indexPath.row].image)
@@ -172,14 +167,14 @@ extension InforViewController: UICollectionViewDataSource {
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionview?.addGestureRecognizer(longPressedGesture)
-      
+        
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if (gestureRecognizer.state != .began) {
             return
         }
-
+        
         let p = gestureRecognizer.location(in: collectionview)
         print(p)
         if let indexPath = collectionview?.indexPathForItem(at: p) {
@@ -189,7 +184,7 @@ extension InforViewController: UICollectionViewDataSource {
             collectionview.reloadData()
         }
     }
-
+    
     
 }
 
@@ -229,7 +224,7 @@ extension InforViewController: UICollectionViewDelegate {
 }
 extension InforViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         if UIDevice.current.userInterfaceIdiom == .pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             if checkList == false {
                 self.listData
                 
@@ -240,7 +235,7 @@ extension InforViewController: UICollectionViewDelegateFlowLayout {
         }
         if checkList == false {
             self.listData
-
+            
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
             return CGSize(width: collectionView.bounds.width / 2.1, height: 200)

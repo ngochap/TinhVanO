@@ -8,11 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtDescript: UITextField!
-    
     
     var nameTitle: String? = ""
     var nameDescript: String? = ""
@@ -21,7 +20,7 @@ class DetailViewController: UIViewController {
     let arrayTitle = ["Title", "Descript"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         imgAvatar.layer.borderWidth = 1
         imgAvatar.layer.masksToBounds = false
         imgAvatar.layer.borderColor = UIColor.black.cgColor
@@ -30,7 +29,7 @@ class DetailViewController: UIViewController {
         addDescript()
         
     }
-   
+    
     func addDescript() {
         txtTitle.text = nameTitle
         txtDescript.text = nameDescript
@@ -42,6 +41,7 @@ class DetailViewController: UIViewController {
     @IBAction func btnBack(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func btnSave(_ sender: UIButton) {
         print("sss")
         let alert = UIAlertController(title: "Seccess", message: .none, preferredStyle: .alert)

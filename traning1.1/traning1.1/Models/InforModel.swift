@@ -12,6 +12,7 @@ class InforModel: NSObject {
     var descript: String = ""
     var image: String = ""
     var check: Bool = true
+    
     func initLoad(_ json:  [String: Any]) -> InforModel{
         if let temp = json["title"] as? String { title = temp }
         if let temp = json["Descript"] as? String { descript = temp }
