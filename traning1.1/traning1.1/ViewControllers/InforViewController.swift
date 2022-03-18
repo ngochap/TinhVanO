@@ -26,6 +26,7 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         checkEdit = false
         checkList = false
+        navigationController?.setNavigationBarHidden(true, animated: true)
         collectionview.backgroundColor = .clear
         collectionview.delegate = self
         collectionview.dataSource = self
@@ -155,7 +156,7 @@ extension InforViewController: UICollectionViewDataSource {
             }
             cell.checkView.isHidden = false
         }
-        cell.backgroundColor = .clear
+                cell.backgroundColor = .clear
         cell.lbTitle.text = listData[indexPath.row].title
         cell.lbDescrip.text = listData[indexPath.row].descript
         cell.imgAvata.image = UIImage.init(named: listData[indexPath.row].image)
@@ -228,9 +229,18 @@ extension InforViewController: UICollectionViewDelegate {
 }
 extension InforViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+         if UIDevice.current.userInterfaceIdiom == .pad {
+            if checkList == false {
+                self.listData
+                
+                return CGSize(width: collectionView.bounds.width, height: 150)
+            } else {
+                return CGSize(width: collectionView.bounds.width / 2.1, height: 250)
+            }
+        }
         if checkList == false {
             self.listData
-            
+
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
             return CGSize(width: collectionView.bounds.width / 2.1, height: 200)

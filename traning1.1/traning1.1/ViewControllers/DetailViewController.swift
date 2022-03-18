@@ -38,6 +38,10 @@ class DetailViewController: UIViewController {
             imgAvatar.load(url: url)
         }
     }
+    
+    @IBAction func btnBack(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     @IBAction func btnSave(_ sender: UIButton) {
         print("sss")
         let alert = UIAlertController(title: "Seccess", message: .none, preferredStyle: .alert)
