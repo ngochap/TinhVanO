@@ -42,16 +42,20 @@
                                         <rect key="frame" x="64" y="0.0" width="447" height="136"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="l2Q-ps-oKv">
-                                                <rect key="frame" x="6" y="12.5" width="134" height="110"/>
+                                                <rect key="frame" x="6" y="22" width="90" height="91"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="TQT-VK-2zx"/>
+                                                    <constraint firstAttribute="height" constant="90" id="XwS-5K-Met"/>
+                                                </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRT-GS-nM9">
-                                                <rect key="frame" x="156" y="43" width="52" height="26.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRT-GS-nM9">
+                                                <rect key="frame" x="112" y="43" width="315" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1C7-B3-Hcs">
-                                                <rect key="frame" x="156" y="73.5" width="52" height="26.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1C7-B3-Hcs">
+                                                <rect key="frame" x="112" y="73.5" width="315" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -62,10 +66,10 @@
                                             <constraint firstItem="l2Q-ps-oKv" firstAttribute="leading" secondItem="bGK-oE-ll8" secondAttribute="leading" constant="6" id="7Ud-DD-mK2"/>
                                             <constraint firstItem="1C7-B3-Hcs" firstAttribute="leading" secondItem="l2Q-ps-oKv" secondAttribute="trailing" constant="16" id="Kfb-zu-UvR"/>
                                             <constraint firstItem="l2Q-ps-oKv" firstAttribute="centerY" secondItem="bGK-oE-ll8" secondAttribute="centerY" id="OcJ-pM-oQr"/>
-                                            <constraint firstItem="l2Q-ps-oKv" firstAttribute="height" secondItem="bGK-oE-ll8" secondAttribute="height" multiplier="0.801471" id="Qbj-4r-iee"/>
                                             <constraint firstItem="nRT-GS-nM9" firstAttribute="centerY" secondItem="l2Q-ps-oKv" secondAttribute="centerY" constant="-12" id="Sbp-9q-dtM"/>
                                             <constraint firstItem="nRT-GS-nM9" firstAttribute="leading" secondItem="l2Q-ps-oKv" secondAttribute="trailing" constant="16" id="Vfo-f8-4L9"/>
-                                            <constraint firstItem="l2Q-ps-oKv" firstAttribute="width" secondItem="bGK-oE-ll8" secondAttribute="width" multiplier="0.3" id="Zlf-WP-LfY"/>
+                                            <constraint firstAttribute="trailing" secondItem="nRT-GS-nM9" secondAttribute="trailing" constant="20" id="X39-ht-ghh"/>
+                                            <constraint firstAttribute="trailing" secondItem="1C7-B3-Hcs" secondAttribute="trailing" constant="20" id="bEZ-Dg-dq4"/>
                                             <constraint firstItem="1C7-B3-Hcs" firstAttribute="top" secondItem="nRT-GS-nM9" secondAttribute="bottom" constant="4" id="gq2-rn-dst"/>
                                         </constraints>
                                     </view>

@@ -7,19 +7,21 @@
 
 import UIKit
 
-class InforViewController: UIViewController {
+class InforViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var btnSync: UIButton!
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var imgList: UIImageView!
     
     var listData: [InforModel] = [InforModel]()
-    var listData1: [InforModel] = [InforModel]()
+    var listData1: [InforModel] = []
+    var indexSelct: Int = -1
+   
     var arrSelect: [Int] = []
     var checkEdit: Bool = false
     var checkDelete: Bool = false
     var checkList: Bool = false
-    var didselect: Int = -1
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         checkEdit = false
@@ -30,6 +32,7 @@ class InforViewController: UIViewController {
         collectionview.register(UINib(nibName: "PageOneCLVCell", bundle: nil), forCellWithReuseIdentifier: "PageOneCLVCell")
         
         getHomeNimeManga(){ _,_ in }
+        setupLongGestureRecognizerOnCollection()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,23 +72,36 @@ class InforViewController: UIViewController {
             let alert = UIAlertController(title: "Are you Delete?", message: .none, preferredStyle: .alert)
             let actionOK = UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
                 
-                for i in 0..<self.listData.count {
-                    for j in self.arrSelect {
-                        if i == j {
-                            self.listData.remove(at: i)
-                        }
-                    }
-                    self.collectionview.reloadData()
-                    self.arrSelect = []
-
+//                for i in 0..<self.arrSelect.count {
+//                    for j in 0..<self.listData.count {
+//                        if self.arrSelect[i] == j {
+//                            self.listData.remove(at: j)
+//                        }
+//                    }
+//                }
+                var arrI = [Int]()
+                for (i,e) in self.listData.enumerated(){
+                          if !e.check{
+                              arrI.append(i)
+                          }
+                      }
+                      if arrI.count > 0{
+                          let arrayR = self.listData
+                              .enumerated()
+                              .filter { !arrI.contains($0.offset) }
+                              .map { $0.element }
+                          self.listData = arrayR
+                          
                 }
+                self.collectionview.reloadData()
+                self.arrSelect = []
             })
             
             alert.addAction(actionOK)
             let actionCancle = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alert.addAction(actionCancle)
             if arrSelect != [] {
-            present(alert, animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
             }
             
         } else {
@@ -104,6 +120,7 @@ class InforViewController: UIViewController {
             checkList = false
         }
     }
+    
 }
 
 extension InforViewController: UICollectionViewDataSource {
@@ -114,21 +131,31 @@ extension InforViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageOneCLVCell", for: indexPath) as? PageOneCLVCell else {
             return UICollectionViewCell()
         }
+        if indexSelct == indexPath.row {
+            let alert = UIAlertController(title: "Are you Delete?", message: .none, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
+                self!.listData.remove(at: self?.indexSelct ?? 0)
+                self?.indexSelct = -1
+                collectionView.reloadData()
+            })
+            alert.addAction(okAction)
+            let cancleAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancleAction)
+            
+            present(alert, animated: true)
+        }
+        
         if checkEdit == false {
             cell.checkView.isHidden = true
         } else {
             if arrSelect.contains(indexPath.row) {
                 cell.imgCheck.image = UIImage(named: "ic_check")
-                
             } else {
                 cell.imgCheck.image = UIImage(named: "ic_uncheck")
             }
-            
             cell.checkView.isHidden = false
         }
-        
         cell.backgroundColor = .clear
-        
         cell.lbTitle.text = listData[indexPath.row].title
         cell.lbDescrip.text = listData[indexPath.row].descript
         cell.imgAvata.image = UIImage.init(named: listData[indexPath.row].image)
@@ -137,6 +164,32 @@ extension InforViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    private func setupLongGestureRecognizerOnCollection() {
+        
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionview?.addGestureRecognizer(longPressedGesture)
+      
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+            return
+        }
+
+        let p = gestureRecognizer.location(in: collectionview)
+        print(p)
+        if let indexPath = collectionview?.indexPathForItem(at: p) {
+            indexSelct = indexPath.row
+            
+            print("aaa: \(indexSelct)")
+            collectionview.reloadData()
+        }
+    }
+
+    
 }
 
 extension InforViewController: UICollectionViewDelegate {
@@ -157,6 +210,7 @@ extension InforViewController: UICollectionViewDelegate {
                     }
                 }
             } else {
+                listData[indexPath.row].check = !listData[indexPath.row].check
                 arrSelect.append(indexPath.row)
                 collectionView.reloadData()
             }
@@ -175,6 +229,8 @@ extension InforViewController: UICollectionViewDelegate {
 extension InforViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if checkList == false {
+            self.listData
+            
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
             return CGSize(width: collectionView.bounds.width / 2.1, height: 200)
