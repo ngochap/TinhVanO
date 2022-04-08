@@ -32,6 +32,7 @@ class InforViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionview.register(UINib(nibName: "PageOneCLVCell", bundle: nil), forCellWithReuseIdentifier: "PageOneCLVCell")
         getHomeNimeManga(){ _,_ in }
         setupLongGestureRecognizerOnCollection()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -127,6 +128,9 @@ extension InforViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageOneCLVCell", for: indexPath) as? PageOneCLVCell else {
             return UICollectionViewCell()
         }
+        if let flowLayout = collectionview?.collectionViewLayout as? UICollectionViewFlowLayout {
+             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+           }
         if indexSelct == indexPath.row {
             let alert = UIAlertController(title: "Are you Delete?", message: .none, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: { [weak self] _ in
@@ -140,7 +144,7 @@ extension InforViewController: UICollectionViewDataSource {
             
             present(alert, animated: true)
         }
-        
+
         if checkEdit == false {
             cell.checkView.isHidden = true
         } else {
@@ -161,31 +165,24 @@ extension InforViewController: UICollectionViewDataSource {
         return cell
     }
     private func setupLongGestureRecognizerOnCollection() {
-        
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
         longPressedGesture.minimumPressDuration = 0.5
         longPressedGesture.delegate = self
         longPressedGesture.delaysTouchesBegan = true
         collectionview?.addGestureRecognizer(longPressedGesture)
-        
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if (gestureRecognizer.state != .began) {
             return
         }
-        
         let p = gestureRecognizer.location(in: collectionview)
         print(p)
         if let indexPath = collectionview?.indexPathForItem(at: p) {
             indexSelct = indexPath.row
-            
-            print("aaa: \(indexSelct)")
             collectionview.reloadData()
         }
     }
-    
-    
 }
 
 extension InforViewController: UICollectionViewDelegate {
@@ -194,9 +191,6 @@ extension InforViewController: UICollectionViewDelegate {
             return
         }
         if checkEdit == true {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PageOneCLVCell", for: indexPath) as? PageOneCLVCell else {
-                return
-            }
             if arrSelect.contains(indexPath.row) {
                 for i in 0..<arrSelect.count {
                     if arrSelect[i] == indexPath.row {
@@ -210,7 +204,6 @@ extension InforViewController: UICollectionViewDelegate {
                 arrSelect.append(indexPath.row)
                 collectionView.reloadData()
             }
-            
         }
         else {
             vc.nameTitle = listData[indexPath.row].title
@@ -219,23 +212,20 @@ extension InforViewController: UICollectionViewDelegate {
             
             navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
 }
+
 extension InforViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         if UIDevice.current.userInterfaceIdiom == .pad {
             if checkList == false {
-                self.listData
-                
                 return CGSize(width: collectionView.bounds.width, height: 150)
             } else {
                 return CGSize(width: collectionView.bounds.width / 2.1, height: 250)
             }
         }
         if checkList == false {
-            self.listData
-            
             return CGSize(width: collectionView.bounds.width, height: 100)
         } else {
             return CGSize(width: collectionView.bounds.width / 2.1, height: 200)

@@ -253,8 +253,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSQ-tf-rZ2">
-                                <rect key="frame" x="0.0" y="124" width="414" height="738"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-bV-HBs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-Oa-gGi">
+                                        <rect key="frame" x="16" y="30.5" width="24" height="18.5"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <imageReference key="backgroundImage" image="arrow.backward" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnBack:" destination="J2D-9k-Ycg" eventType="touchUpInside" id="yhA-ba-60m"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="EUK-Oa-gGi" firstAttribute="centerY" secondItem="3rD-bV-HBs" secondAttribute="centerY" id="1CH-ex-xyU"/>
+                                    <constraint firstAttribute="height" constant="80" id="8Mj-Eo-Hsm"/>
+                                    <constraint firstItem="EUK-Oa-gGi" firstAttribute="leading" secondItem="3rD-bV-HBs" secondAttribute="leading" constant="16" id="pZt-lv-3Hd"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vSQ-tf-rZ2">
+                                <rect key="frame" x="0.0" y="132" width="414" height="738"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trn-zj-Pac">
                                         <rect key="frame" x="173" y="667" width="68" height="51"/>
@@ -328,30 +352,6 @@
                                     <constraint firstAttribute="trailing" secondItem="PjW-31-cpH" secondAttribute="trailing" constant="30" id="gKu-JS-7oj"/>
                                     <constraint firstItem="1Dt-pO-26l" firstAttribute="centerX" secondItem="vSQ-tf-rZ2" secondAttribute="centerX" id="qCs-dc-poz"/>
                                     <constraint firstAttribute="bottom" secondItem="trn-zj-Pac" secondAttribute="bottom" constant="20" id="waa-O7-n4o"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rD-bV-HBs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="80"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUK-Oa-gGi">
-                                        <rect key="frame" x="16" y="30.5" width="24" height="18.5"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <imageReference key="backgroundImage" image="arrow.backward" catalog="system" symbolScale="large"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="btnBack:" destination="J2D-9k-Ycg" eventType="touchUpInside" id="yhA-ba-60m"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="EUK-Oa-gGi" firstAttribute="centerY" secondItem="3rD-bV-HBs" secondAttribute="centerY" id="1CH-ex-xyU"/>
-                                    <constraint firstAttribute="height" constant="80" id="8Mj-Eo-Hsm"/>
-                                    <constraint firstItem="EUK-Oa-gGi" firstAttribute="leading" secondItem="3rD-bV-HBs" secondAttribute="leading" constant="16" id="pZt-lv-3Hd"/>
                                 </constraints>
                             </view>
                         </subviews>
